@@ -153,6 +153,8 @@ return {
 			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle [U]ndotree" })
 		end,
 	},
+	{ "nvim-treesitter/nvim-treesitter-context" },
+	{ "wakatime/vim-wakatime", lazy = false },
 	require("lsp"),
 	require("dap"),
 }
