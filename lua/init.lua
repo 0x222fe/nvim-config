@@ -11,6 +11,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_augroup("netrw_settings", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	group = "netrw_settings",
+	pattern = "netrw",
+	callback = function()
+		vim.wo.relativenumber = true
+	end,
+})
 
 local function execute_in_netrw_dir()
 	local current_dir = vim.b.netrw_curdir or vim.fn.expand("%:p:h")
