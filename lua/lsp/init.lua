@@ -7,7 +7,10 @@ return {
 		{ "williamboman/mason.nvim", opts = {} },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-
+		{
+			"mfussenegger/nvim-jdtls",
+			ft = "java",
+		},
 		-- Useful status updates for LSP.
 		{ "j-hui/fidget.nvim", opts = {} },
 
