@@ -53,10 +53,6 @@ return {
 			builtin.git_files({ show_untracked = true })
 		end)
 
-		vim.keymap.set("n", "<leader>ps", function()
-			builtin.live_grep()
-		end, { desc = "[P]roject [S]earch" })
-
 		vim.keymap.set("n", "<leader>vh", builtin.help_tags, { desc = "[V]view [H]elp" })
 
 		vim.keymap.set("n", "<leader>gb", function()
@@ -82,6 +78,9 @@ return {
 		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 		vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+		vim.keymap.set("n", "<leader>sG", function()
+			builtin.grep_string({ search = vim.fn.input("Grep > ") })
+		end)
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
@@ -127,5 +126,25 @@ return {
 				},
 			},
 		})
+
+		local actions = require("telescope.actions")
+		local action_state = require("telescope.actions.state")
+		local function oil_dirs_picker()
+			require("telescope.builtin").find_files({
+				prompt_title = "Oil Directories",
+				find_command = { "fdfind", "--type", "d", "--hidden", "." },
+				attach_mappings = function(prompt_bufnr, map)
+					actions.select_default:replace(function()
+						actions.close(prompt_bufnr)
+						local selection = action_state.get_selected_entry()
+						-- Open Oil at the selected directory
+						vim.cmd("Oil " .. selection[1])
+					end)
+					return true
+				end,
+			})
+		end
+
+		vim.keymap.set("n", "<leader>so", oil_dirs_picker, { desc = "Telescope Oil Directories" })
 	end,
 }
