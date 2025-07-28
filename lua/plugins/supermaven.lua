@@ -31,5 +31,10 @@ return {
 				return false
 			end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
 		})
+
+		vim.keymap.set("n", "<leader>ts", function()
+			local api = require("supermaven-nvim.api")
+			api.toggle()
+		end, { desc = "[T]oggle [S]upermaven" })
 	end,
 }
