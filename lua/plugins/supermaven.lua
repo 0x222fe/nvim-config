@@ -17,7 +17,7 @@ return {
 			keymaps = {
 				accept_suggestion = "<Tab>",
 				clear_suggestion = "<C-]>",
-				accept_word = "<C-j>",
+				accept_word = "<C-t>",
 			},
 			ignore_filetypes = {}, -- or { "cpp", }
 			color = {
@@ -35,6 +35,11 @@ return {
 		vim.keymap.set("n", "<leader>ts", function()
 			local api = require("supermaven-nvim.api")
 			api.toggle()
+			if api.is_running() then
+				print("Supermaven Enabled")
+			else
+				print("Supermaven Disabled")
+			end
 		end, { desc = "[T]oggle [S]upermaven" })
 	end,
 }

@@ -2,7 +2,12 @@ local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
 lspconfig.omnisharp.setup({
-	cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+	cmd = {
+		"/home/jason/.local/share/nvim/mason/bin/OmniSharp",
+		"--languageserver",
+		"--hostPID",
+		tostring(vim.fn.getpid()),
+	},
 	filetypes = { "cs" },
 	root_dir = util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json"),
 	settings = {

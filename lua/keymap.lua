@@ -26,3 +26,6 @@ vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { noremap = true, silent = tru
 
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { noremap = true, silent = true })
+
+vim.keymap.set({ "n", "v" }, "<S-CR>", "<Nop>")
+vim.keymap.set({ "n" }, "<CR>", "<Nop>")

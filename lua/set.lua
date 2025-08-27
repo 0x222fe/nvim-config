@@ -1,3 +1,5 @@
+vim.api.nvim_create_user_command("W", "w", {})
+
 vim.g.have_nerd_font = true
 
 vim.opt.number = true -- Show absolute line number for the current line
