@@ -1,10 +1,7 @@
-local mason_registry = require("mason-registry")
-local lspconfig = require("lspconfig")
+local vue_language_server_path = vim.fn.stdpath("data")
+	.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
-local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-	.. "/node_modules/@vue/language-server"
-
-lspconfig.ts_ls.setup({
+vim.lsp.config("ts_ls", {
 	init_options = {
 		plugins = {
 			{
@@ -17,4 +14,4 @@ lspconfig.ts_ls.setup({
 	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 })
 -- No need to set `hybridMode` to `true` as it's the default value
-lspconfig.volar.setup({})
+vim.lsp.config("volar", {})

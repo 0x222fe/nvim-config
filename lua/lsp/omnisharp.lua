@@ -1,7 +1,6 @@
-local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
-lspconfig.omnisharp.setup({
+vim.lsp.config("Omnisharp", {
 	cmd = {
 		"/home/jason/.local/share/nvim/mason/bin/OmniSharp",
 		"--languageserver",
