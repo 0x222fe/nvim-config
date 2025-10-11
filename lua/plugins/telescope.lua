@@ -132,7 +132,7 @@ return {
 		local function oil_dirs_picker()
 			require("telescope.builtin").find_files({
 				prompt_title = "Oil Directories",
-				find_command = { "fdfind", "--type", "d", "--hidden", "." },
+				find_command = { "fd", "--type", "d", "--hidden", "." },
 				attach_mappings = function(prompt_bufnr, map)
 					actions.select_default:replace(function()
 						actions.close(prompt_bufnr)

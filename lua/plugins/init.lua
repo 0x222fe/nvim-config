@@ -92,9 +92,17 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
-		init = function()
-			vim.cmd.colorscheme("tokyonight-night")
-			vim.cmd.hi("Comment gui=none")
+		config = function()
+			require("tokyonight").setup({
+				style = "night",
+				transparent = true,
+				terminal_colors = true,
+				styles = {
+					sidebars = "transparent",
+					floats = "transparent",
+				},
+			})
+			vim.cmd.colorscheme("tokyonight") -- apply it after setup
 		end,
 	},
 	{
