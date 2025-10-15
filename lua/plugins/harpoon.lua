@@ -46,18 +46,33 @@ return {
 			harpoon:list():remove()
 		end, { desc = "Harpoon [D]elete" })
 
-		vim.keymap.set("n", "<leader>jh", function()
+
+		vim.keymap.set("n", "<A-h>", function()
 			harpoon:list():select(1)
 		end, { desc = "Harpoon [J]ump 1" })
-		vim.keymap.set("n", "<leader>jj", function()
+		vim.keymap.set("n", "<A-j>", function()
 			harpoon:list():select(2)
 		end, { desc = "Harpoon [J]ump 2" })
-		vim.keymap.set("n", "<leader>jk", function()
+		vim.keymap.set("n", "<A-k>", function()
 			harpoon:list():select(3)
 		end, { desc = "Harpoon [J]ump 3" })
-		vim.keymap.set("n", "<leader>jl", function()
+		vim.keymap.set("n", "<A-l>", function()
 			harpoon:list():select(4)
 		end, { desc = "Harpoon [J]ump 4" })
+
+
+		-- vim.keymap.set("n", "<leader>jh", function()
+		-- 	harpoon:list():select(1)
+		-- end, { desc = "Harpoon [J]ump 1" })
+		-- vim.keymap.set("n", "<leader>jj", function()
+		-- 	harpoon:list():select(2)
+		-- end, { desc = "Harpoon [J]ump 2" })
+		-- vim.keymap.set("n", "<leader>jk", function()
+		-- 	harpoon:list():select(3)
+		-- end, { desc = "Harpoon [J]ump 3" })
+		-- vim.keymap.set("n", "<leader>jl", function()
+		-- 	harpoon:list():select(4)
+		-- end, { desc = "Harpoon [J]ump 4" })
 
 		-- Toggle previous & next buffers stored within Harpoon list
 		vim.keymap.set("n", "<C-S-P>", function()

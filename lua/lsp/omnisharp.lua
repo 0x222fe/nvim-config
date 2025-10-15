@@ -1,6 +1,7 @@
+local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
-vim.lsp.config("Omnisharp", {
+lspconfig.omnisharp.setup({
 	cmd = {
 		"/home/jason/.local/share/nvim/mason/bin/OmniSharp",
 		"--languageserver",
@@ -58,7 +59,7 @@ vim.lsp.config("Omnisharp", {
 		Sdk = {
 			-- Specifies whether to include preview versions of the .NET SDK when
 			-- determining which version to use for project loading.
-			IncludePrereleases = true,
+			IncludePrereleases = false,
 		},
 	},
 	on_new_config = function(new_config, _)
