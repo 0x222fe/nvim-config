@@ -292,6 +292,7 @@ return {
 		})
 		require("lsp.ts&volar")
 		require("lsp.omnisharp")
+		require("lsp.harper")
 	end,
 }
 

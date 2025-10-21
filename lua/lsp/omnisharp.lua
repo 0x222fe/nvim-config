@@ -1,7 +1,22 @@
-local lspconfig = require("lspconfig")
+-- local util = require("lspconfig.util")
+-- vim.lsp.config("Omnisharp", {
+
+local lsp = require("lspconfig")
 local util = require("lspconfig.util")
 
-lspconfig.omnisharp.setup({
+--INFO: Temporarily suppress lspconfig deprecation warning
+--the new vim.lsp.config has problems working with .editorconfig
+--keep using old syntax
+local orig_notify = vim.notify
+vim.notify = function(msg, level, opts)
+local substr = "require('lspconfig')"
+  if type(msg) == "string" and msg:find(substr,1,true) then
+    return
+  end
+  return orig_notify(msg, level, opts)
+end
+
+lsp.omnisharp.setup({
 	cmd = {
 		"/home/jason/.local/share/nvim/mason/bin/OmniSharp",
 		"--languageserver",
@@ -102,3 +117,6 @@ lspconfig.omnisharp.setup({
 		end, { desc = "[T]oggle [H]ints" })
 	end,
 })
+
+-- INFO: Restore original notify function
+vim.notify = orig_notify
