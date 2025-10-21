@@ -29,3 +29,21 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { noremap = true, si
 
 vim.keymap.set({ "n", "v" }, "<S-CR>", "<Nop>")
 vim.keymap.set({ "n" }, "<CR>", "<Nop>")
+
+
+vim.keymap.set("n", "<leader>ee", function()
+  local lines = {
+    "if err != nil {",
+    "return err",
+    "}",
+  }
+  local curr_line = vim.api.nvim_get_current_line()
+  if curr_line:match("^%s*$") then
+    vim.api.nvim_buf_set_lines(0, vim.fn.line(".") - 1, vim.fn.line("."), false, lines)
+    vim.cmd("normal! j$")
+  else
+    vim.api.nvim_put(lines, "l", true, true)
+    vim.cmd("normal! 2k$")
+  end
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Insert if err != nil check" })
