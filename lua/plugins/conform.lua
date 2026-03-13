@@ -28,6 +28,10 @@ return {
             }
         end,
         formatters_by_ft = {
+            c = { "clang_format" },
+            cpp = { "clang_format" },
+            go = { "gofmt" },
+            rust = { "rustfmt" },
             lua = { "stylua" },
             javascript = { "prettier" },
             typescript = { "prettier" },
@@ -38,8 +42,10 @@ return {
             scss = { "prettier" },
             less = { "prettier" },
             html = { "prettier" },
-            json = { "prettier" },
+            json = { "jq" },
             jsonc = { "prettier" },
+            sh = { "shfmt" },
+            sql = { "sqlfmt" },
             yaml = { "prettier" },
             markdown = { "prettier" },
             graphql = { "prettier" },

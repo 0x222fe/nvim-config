@@ -39,6 +39,8 @@ local cmd = {
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
 
+    "-javaagent:" .. jdtls_path .. "/lombok.jar",
+
     -- The JDTLS launcher - automatically finds the correct jar in the Mason installation
     "-jar",
     vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
