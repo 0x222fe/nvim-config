@@ -9,7 +9,7 @@ local util = require("lspconfig.util")
 --keep using old syntax
 local orig_notify = vim.notify
 vim.notify = function(msg, level, opts)
-local substr = "require('lspconfig')"
+local substr = "lspconfig"
   if type(msg) == "string" and msg:find(substr,1,true) then
     return
   end
