@@ -9,8 +9,8 @@ return {
         local cwd = vim.uv.cwd()
         local basename = vim.fs.basename(cwd)
         _99.setup({
-            provider = _99.ClaudeCodeProvider, -- default: OpenCodeProvider
-            model = "claude-sonnet-4-5",
+            provider = _99.OpenCodeProvider, -- default: OpenCodeProvider
+            -- model = "claude-sonnet-4-5",
             logger = {
                 level = _99.DEBUG,
                 path = "/tmp/" .. basename .. ".99.debug",
