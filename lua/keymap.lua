@@ -18,7 +18,7 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set("n", "<leader>rl", "<CMD>LspRestart<CR>", { desc = "[R]estart [L]SP" })
+vim.keymap.set("n", "<leader>rl", "<CMD>lsp restart<CR>", { desc = "[R]estart [L]SP" })
 vim.keymap.set("n", "<leader>rf", "<CMD>e!<CR>", { desc = "[R]eload current [F]ile" })
 
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { noremap = true, silent = true })
