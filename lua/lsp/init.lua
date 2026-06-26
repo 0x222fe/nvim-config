@@ -4,7 +4,15 @@ return {
         -- Automatically install LSPs and related tools to stdpath for Neovim
         -- Mason must be loaded before its dependents so we need to set it up here.
         -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-        { "williamboman/mason.nvim", opts = {} },
+        {
+            "williamboman/mason.nvim",
+            opts = {
+                registries = {
+                    "github:mason-org/mason-registry",
+                    "github:Crashdummyy/mason-registry",
+                },
+            },
+        },
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         {
@@ -272,15 +280,18 @@ return {
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             "stylua",
-            "omnisharp",
+            -- "omnisharp",
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
         require("mason-lspconfig").setup({
-            -- ensure_installed = { "omnisharp" },
+            automatic_enable = { exclude = { "roslyn_ls" } },
             -- automatic_installation = false,
             handlers = {
                 function(server_name)
+                    if server_name == "roslyn_ls" then
+                        return -- roslyn.nvim handles cs
+                    end
                     local server = servers[server_name] or {}
                     -- This handles overriding only values explicitly passed
                     -- by the server configuration above. Useful when disabling
@@ -291,8 +302,10 @@ return {
             },
         })
         require("lsp.ts&volar")
-        require("lsp.omnisharp")
+        -- require("lsp.omnisharp")
+        require("lsp.roslyn")
         require("lsp.harper")
+        require("lsp.rust_analyzer")
     end,
 }
 
